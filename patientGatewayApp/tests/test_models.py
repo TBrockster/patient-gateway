@@ -4,7 +4,7 @@ import datetime
 
 # Create your tests here.
 
-class PatientTestCase(TestCase):
+class PatientCreationTestCase(TestCase):
     def setUp(self):
         Patient.objects.create(firstname='Test',
                                middleInitial='T',
@@ -37,6 +37,7 @@ class PatientTestCase(TestCase):
         test_patient = Patient.objects.get(firstname='Test')
         self.assertEqual(test_patient.dateOfBirth, datetime.date(2000, 1, 1))
 
+class PatientDataTestCase(TestCase):
     def test_patient_zero_id(self):
         """test expected data is being loaded into db"""
         test_patient = Patient.objects.get(id=0)
