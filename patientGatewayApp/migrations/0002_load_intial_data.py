@@ -3,7 +3,6 @@ import os
 import json
 from sys import path
 from patientGatewayApp.models import Patient
-
 from django.db import migrations
 
 data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data'))
@@ -14,7 +13,8 @@ def load_data(apps, schema_editor):
     with open(data_file) as json_file:
         data = json.load(json_file)
     for datum in data:
-        Patient.objects.create(firstname=datum['firstname'],
+        Patient.objects.create(id=datum['id'],
+                               firstname=datum['firstname'],
                                middleInitial=datum['middleInitial'],
                                lastname=datum['lastname'],
                                gender=datum['gender'],
