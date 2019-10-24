@@ -3,7 +3,7 @@
 ## Project Installation
 
   - git clone https://github.com/TBrockster/patient-gateway.git
-  - cd .\patient-gateway\
+  - cd patient-gateway
   - pipenv install
   - python manage.py migrate
   - python manage.py runserver
@@ -29,6 +29,10 @@ You can now visit:
   
 This page lists all the patients, and allows for the creation of new users a button / form at the bottom (the date must be in yyyy-mm-dd format).
 If you select a patient, the form at the bottom will update to show their information, and the details of any samples that belong to them.
+
+## My Approach
+
+I began this project by deciding the framworks I was going to use. I chose Django for its powerful django-rest-framwork library, and React due to its affinity for Single Page Applications. The first thing I did after the initial setup was write some tests for the patient table structure, and the data loading process. I then looked for different ways to load data into the database from a JSON file. I found that django has an inbuilt 'loaddata' command, but that requires the JSON be formatted in a specific way, so I decided on 'data-migrations' that I wrote myself. Once I had this and my tests were passing, I filled out the necessary steps for hosting the API, e.g. adding a serializer / adding the url, and I was ready to get started on the front end. The first thing I did was plan out the design for the Challenges one and two, which I have added below.
 
 ## Patient Sample Design Mock-up
 
