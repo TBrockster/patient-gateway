@@ -32,7 +32,7 @@ If you select a patient, the form at the bottom will update to show their inform
 
 ## Patient Sample Design Mock-up
 
-![Alt text](.\design\sample_timeline_mockup.png?raw=true)
+![Alt text](/design/sample_timeline_mockup.png?raw=true)
 
 ## Initial Project Setup
 
