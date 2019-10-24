@@ -13,7 +13,7 @@ class Patient(models.Model):
         return self.firstname + ' ' + self.lastname
 
 class Sample(models.Model):
-    patientID = models.ForeignKey(
+    patientId = models.ForeignKey(
       Patient,
       db_column='patientId',
       on_delete=models.CASCADE,

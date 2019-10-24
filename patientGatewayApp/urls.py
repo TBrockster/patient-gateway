@@ -4,6 +4,7 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'patients', views.PatientViewSet)
+router.register(r'samples', views.SampleViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

@@ -4,12 +4,15 @@ import PatientDetails from './patient-details';
 import NewPatient from './new-patient';
 import EditPatient from './edit-patient';
 import PatientData from './shared/patient-data';
+import SampleData from './shared/sample-data';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.patientData = new PatientData();
+    this.sampleData = new SampleData();
+    this.patientSamples = this.patientSamples.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onNewPatient = this.onNewPatient.bind(this);
     this.onEditPatient = this.onEditPatient.bind(this);
@@ -22,12 +25,14 @@ class App extends Component {
       showDetails: false,
       editPatient: false,
       selectedPatient: null,
-      newPatient: null
+      newPatient: null,
+      selectedPatientSamples: null
     }
   }
 
   componentDidMount() {
     this.getPatients();
+    this.getSamples();
   }
 
   render() {
@@ -35,6 +40,7 @@ class App extends Component {
     if(!patients) return null;
     const showDetails = this.state.showDetails;
     const selectedPatient = this.state.selectedPatient;
+    const selectedPatientSamples = this.state.selectedPatientSamples;
     const newPatient = this.state.newPatient;
     const editPatient = this.state.editPatient;
     const listPatients = patients.map((patient) =>
@@ -52,7 +58,7 @@ class App extends Component {
             <button type="button" name="button" onClick={() => this.onNewPatient()}>New Patient</button>
           <br/>
             {newPatient && <NewPatient onSubmit={this.onCreatePatient} onCancel={this.onCancel}/>}
-            {showDetails && selectedPatient && <PatientDetails patient={selectedPatient} onEdit={this.onEditPatient}  onDelete={this.onDeletePatient} />}
+            {showDetails && selectedPatient && <PatientDetails patient={selectedPatient} samples={selectedPatientSamples} onEdit={this.onEditPatient}  onDelete={this.onDeletePatient}/>}
             {editPatient && selectedPatient && <EditPatient onSubmit={this.onUpdatePatient} onCancel={this.onCancelEdit} patient={selectedPatient} />}
       </div>
     );
@@ -66,12 +72,31 @@ class App extends Component {
     });
   }
 
+  getSamples() {
+    this.sampleData.retrieveSamples().then(samples => {
+      this.setState({
+        samples: samples
+      });
+    });
+  }
+
+  patientSamples(patientId) {
+    var result = []
+    this.state.samples.map(function (sample) {
+      if (sample.patientId === patientId) {
+        result.push(sample);
+      }
+    })
+    return result
+  }
+
   onSelect(patientId) {
     this.clearState();
     this.patientData.getPatient(patientId).then(patient => {
       this.setState({
         showDetails: true,
-        selectedPatient: patient
+        selectedPatient: patient,
+        selectedPatientSamples: this.patientSamples(patientId)
       });
     })
   }
@@ -129,7 +154,8 @@ class App extends Component {
       showDetails: false,
       selectedPatient: null,
       editPatient: false,
-      newPatient: null
+      newPatient: null,
+      selectedPatientSamples: null
     });
   }
 }

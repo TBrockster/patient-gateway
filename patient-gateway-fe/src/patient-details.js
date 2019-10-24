@@ -11,6 +11,10 @@ class PatientDetails extends Component {
 
   render() {
     const patient = this.props.patient;
+    const samples = this.props.samples;
+    console.log(samples)
+    var formatted_samples = samples.map((sample) =>
+    <ul key={sample.id}> {sample.sampleType} | {sample.date} | {sample.quality} </ul>)
     return (
       <div className="input-panel">
       <div><span className="field-name">ID:</span><br/> {patient.id}</div>
@@ -19,6 +23,8 @@ class PatientDetails extends Component {
       <div><span className="field-name">Last Name:</span><br/> {patient.lastname}</div>
       <div><span className="field-name">Gender:</span><br/> {patient.gender}</div>
       <div><span className="field-name">Date of Birth:</span><br/> {patient.dateOfBirth}</div>
+      <br/>
+      <div><span className="field-name">Samples Below!</span><br/>{formatted_samples}</div>
       <br/>
       <button onClick={() => this.onEdit()}>Edit</button>
       <button onClick={() => this.onDelete()}>Delete</button> 

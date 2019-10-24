@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Patient
+from .models import Patient, Sample
+
 class PatientSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Patient
@@ -9,3 +10,12 @@ class PatientSerializer(serializers.HyperlinkedModelSerializer):
                   'lastname',
                   'gender',
                   'dateOfBirth',)
+
+class SampleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sample
+        fields = ('id',
+                  'patientId',
+                  'sampleType',
+                  'date',
+                  'quality',)
