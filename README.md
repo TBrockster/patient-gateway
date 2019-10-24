@@ -34,11 +34,13 @@ If you select a patient, the form at the bottom will update to show their inform
 
 I began this project by deciding the framworks I was going to use. I chose Django for its powerful django-rest-framwork library, and React due to its affinity for Single Page Applications. I also decided that the default sqlite database would be sufficient for this project, although should probably be changed to something like postgreSQL in production. The first thing I did after the initial setup was write some tests for the patient table structure, and the data loading process. I then looked for different ways to load data into the database from a JSON file. I found that django has an inbuilt 'loaddata' command, but that requires the JSON be formatted in a specific way, so I decided on 'data-migrations' that I wrote myself. Once I had this and my tests were passing, I filled out the necessary steps for hosting the API, e.g. adding a serializer / adding the url, and I was ready to get started on the front end. 
 
-The first thing I did was plan out the design for the Challenges one and two, which I have added below. Seeing Bonus Challenge 2, I decided it would be easier to set up each part of CRUD at the same time, although in hindsight this was perhaps a bit over-ambitious time-wise. I set up the front end with a basic layout, and set up the general component structure with some mock data. Then I linked up the data from the live API. Once that was done I repeated this whole backend -> frontend cycle for the sample data as well.
+The first thing I did for the front end was plan out the design for the Challenges one and two, which I have added below. Seeing Bonus Challenge 2, I decided it would be easier to set up each part of CRUD at the same time, although in hindsight this was perhaps a bit over-ambitious time-wise. I set up the front end with a basic layout, and set up the general component structure with some mock data. Then I linked up the data from the live API. Once that was done I repeated this whole backend -> frontend cycle for the sample data as well.
 
 ## Things I didn't have enough time for
 
   - Implement the sample timeline drafted out below.
+  - Improve the layout of the patient list / patient details form.
+  - Implement Update and Delete for patients and samples via the api and front end.
   - Add variant data, and incorporate into the timeline display.
   - Write some jest snapshot tests for the front end.
   - Write some capybara / cypress integration tests.
