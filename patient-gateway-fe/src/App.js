@@ -3,7 +3,7 @@ import './App.css';
 import PatientDetails from './patient-details';
 import NewPatient from './new-patient';
 import EditPatient from './edit-patient';
-import PatientData from './shared/mock-patient-data';
+import PatientData from './shared/patient-data';
 
 class App extends Component {
 
@@ -38,7 +38,7 @@ class App extends Component {
     const newPatient = this.state.newPatient;
     const editPatient = this.state.editPatient;
     const listPatients = patients.map((patient) =>
-      <ul key={patient.link} onClick={() => this.onSelect(patient.link)}>
+      <ul key={patient.id} onClick={() => this.onSelect(patient.id)}>
             <span className="patient-name" >{patient.firstname + ' ' + patient.lastname} </span>
       </ul>
     );
@@ -66,9 +66,9 @@ class App extends Component {
     });
   }
 
-  onSelect(patientLink) {
+  onSelect(patientId) {
     this.clearState();
-    this.patientData.getPatient(patientLink).then(patient => {
+    this.patientData.getPatient(patientId).then(patient => {
       this.setState({
         showDetails: true,
         selectedPatient: patient
@@ -117,9 +117,9 @@ class App extends Component {
     });
   }
 
-  onDeletePatient(patientLink) {
+  onDeletePatient(patientId) {
     this.clearState();
-    this.patientData.deletePatient(patientLink).then(res => {
+    this.patientData.deletePatient(patientId).then(res => {
       this.getPatients();
     });
   }

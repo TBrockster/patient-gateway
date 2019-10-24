@@ -18,7 +18,7 @@ class EditPatient extends Component {
       lastname: patientToEdit.lastname,
       gender: patientToEdit.gender,
       dateOfBirth: patientToEdit.dateOfBirth,
-      link: patientToEdit.link
+      id: patientToEdit.id
     };
   }
 

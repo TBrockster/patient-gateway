@@ -13,7 +13,7 @@ class PatientDetails extends Component {
     const patient = this.props.patient;
     return (
       <div className="input-panel">
-      {/* <span className="form-caption">{ patient.firstname}</span> */}
+      <div><span className="field-name">ID:</span><br/> {patient.id}</div>
       <div><span className="field-name">First Name:</span><br/> {patient.firstname}</div>
       <div><span className="field-name">Middle Initial:</span><br/> {patient.middleInitial}</div>
       <div><span className="field-name">Last Name:</span><br/> {patient.lastname}</div>
@@ -33,7 +33,7 @@ class PatientDetails extends Component {
   onDelete() {
     const patient = this.props.patient;
     if(window.confirm('Are you sure you want to delete this patient?')) {
-      this.props.onDelete(patient.link);
+      this.props.onDelete(patient.id);
     }
   }
 }

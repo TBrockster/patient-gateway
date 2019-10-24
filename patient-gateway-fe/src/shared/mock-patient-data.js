@@ -2,9 +2,9 @@ class PatientData {
 
   constructor() {
     this.patients = [
-      {link:1, id:1, firstname:'Alice', middleInitial:'A', lastname:'Anderson', gender:'Female', dateOfBirth:'1990-01-01'},
-      {link:2, id:2, firstname:'Bob', middleInitial:'B', lastname:'Borislav', gender:'Male', dateOfBirth:'1999-12-31'},
-      {link:3, id:3, firstname:'Chris', middleInitial:'C', lastname:'Chamomile', gender:'Male', dateOfBirth:'2010-01-01'},
+      {id:1, firstname:'Alice', middleInitial:'A', lastname:'Anderson', gender:'Female', dateOfBirth:'1990-01-01'},
+      {id:2, firstname:'Bob', middleInitial:'B', lastname:'Borislav', gender:'Male', dateOfBirth:'1999-12-31'},
+      {id:3, firstname:'Chris', middleInitial:'C', lastname:'Chamomile', gender:'Male', dateOfBirth:'2010-01-01'},
     ];
   }
 
@@ -12,9 +12,9 @@ class PatientData {
     return Promise.resolve(this.patients);
   }
 
-  async getPatient(patientLink) {
+  async getPatient(patientId) {
     for(var i = 0; i < this.patients.length; i++) {
-      if ( this.patients[i].link === patientLink) {
+      if ( this.patients[i].id === patientId) {
         return Promise.resolve(this.patients[i]);
       }
     }

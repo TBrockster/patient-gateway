@@ -13,8 +13,7 @@ def load_data(apps, schema_editor):
     with open(data_file) as json_file:
         data = json.load(json_file)
     for datum in data:
-        Patient.objects.create(id=datum['id'],
-                               firstname=datum['firstname'],
+        Patient.objects.create(firstname=datum['firstname'],
                                middleInitial=datum['middleInitial'],
                                lastname=datum['lastname'],
                                gender=datum['gender'],

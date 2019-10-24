@@ -14,7 +14,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Patient',
             fields=[
-                ('id', models.IntegerField(primary_key=True, serialize=False)),
                 ('firstname', models.CharField(max_length=255)),
                 ('middleInitial', models.CharField(max_length=255)),
                 ('lastname', models.CharField(max_length=255)),
