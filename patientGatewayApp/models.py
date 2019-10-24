@@ -10,4 +10,14 @@ class Patient(models.Model):
     dateOfBirth = models.DateField()
 
     def __str__(self):
-        return self.name + ' ' + self.lastname
+        return self.firstname + ' ' + self.lastname
+
+class Sample(models.Model):
+    patientID = models.ForeignKey(
+      Patient,
+      db_column='patientId',
+      on_delete=models.CASCADE,
+    )
+    sampleType = models.CharField(max_length=255)
+    date = models.DateTimeField()
+    quality = models.CharField(max_length=255)
